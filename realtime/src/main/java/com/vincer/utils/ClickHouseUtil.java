@@ -16,43 +16,40 @@ public class ClickHouseUtil {
 
     public static <T> SinkFunction getSink(String sql) {
         return JdbcSink.sink(sql,
-                new JdbcStatementBuilder<T>() {
-                    @Override
-                    public void accept(PreparedStatement preparedStatement, T obj) throws SQLException {
+                (JdbcStatementBuilder<T>) (preparedStatement, obj) -> {
 
-                        //反射的方式获取所有的属性名
-                        Field[] fields = obj.getClass().getDeclaredFields();
+                    //反射的方式获取所有的属性名
+                    Field[] fields = obj.getClass().getDeclaredFields();
 
-                        //定义跳过的属性
-                        int offset = 0;
+                    //定义跳过的属性
+                    int offset = 0;
 
-                        for (int i = 0; i < fields.length; i++) {
+                    for (int i = 0; i < fields.length; i++) {
 
-                            //获取字段名
-                            Field field = fields[i];
+                        //获取字段名
+                        Field field = fields[i];
 
-                            //获取字段上的注解
-                            TransientSink transientSink = field.getAnnotation(TransientSink.class);
-                            if (transientSink != null) {
-                                offset++;
-                                continue;
-                            }
+                        //获取字段上的注解
+                        TransientSink transientSink = field.getAnnotation(TransientSink.class);
+                        if (transientSink != null) {
+                            offset++;
+                            continue;
+                        }
 
-                            //设置可访问私有属性的值
-                            field.setAccessible(true);
+                        //设置可访问私有属性的值
+                        field.setAccessible(true);
 
-                            try {
-                                Object o = field.get(obj);
+                        try {
+                            Object o = field.get(obj);
 
-                                //给站位符赋值
-                                preparedStatement.setObject(i + 1 - offset, o);
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-
+                            //给站位符赋值
+                            preparedStatement.setObject(i + 1 - offset, o);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
                         }
 
                     }
+
                 },
                 JdbcExecutionOptions.builder()
                         .withBatchSize(5)

@@ -23,11 +23,10 @@ public class RedisUtil {
             jedisPool = new JedisPool(jedisPoolConfig, "hadoop102", 6379, 1000);
 
             System.out.println("开辟连接池");
-            return jedisPool.getResource();
 
         } else {
-//            System.out.println(" 连接池:" + jedisPool.getNumActive());
-            return jedisPool.getResource();
+            System.out.println(" 连接池:" + jedisPool.getNumActive());
         }
+        return jedisPool.getResource();
     }
 }

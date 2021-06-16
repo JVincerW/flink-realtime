@@ -41,7 +41,7 @@ public class KeyWordUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(analyze("尚硅谷大数据项目之Flink实时数仓"));
+        System.out.println(analyze("大数据项目之Flink实时数仓"));
     }
 
 }

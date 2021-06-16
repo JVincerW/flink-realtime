@@ -47,13 +47,9 @@ public class MyKafkaUtil {
     }
 
     public static String getKafkaDDL(String topic, String groupId) {
-        return "  'connector' = 'kafka'," +
-                "  'topic' = '" + topic + "'," +
-                "  'properties.bootstrap.servers' = '" + KAFKA_SERVER + "'," +
-                "  'properties.group.id' = '" + groupId + "'," +
-                "  'scan.startup.mode' = 'latest-offset'," +
-                "  'format' = 'json'" +
-                ")";
+        String kafkaDDL = String.format("  'connector' = 'kafka',  'topic' = '%s',  'properties.bootstrap.servers' = '%s',  'properties.group.id' = '%s',  'scan.startup.mode' = 'latest-offset',  'format' = 'json')", topic, KAFKA_SERVER, groupId);
+        System.out.println(kafkaDDL);
+        return kafkaDDL;
     }
 
 }

@@ -30,7 +30,7 @@ public class ThreadPoolUtil {
                             20,
                             300L,
                             TimeUnit.SECONDS,
-                            new LinkedBlockingDeque<Runnable>(Integer.MAX_VALUE));
+                            new LinkedBlockingDeque<>(Integer.MAX_VALUE));
                 }
             }
         }
