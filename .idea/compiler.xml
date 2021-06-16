@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="publisher" />
+        <module name="realtime" />
+        <module name="logger" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="flink-realtime" target="1.8" />
+      <module name="logger" target="1.8" />
+      <module name="publisher" target="1.8" />
+      <module name="realtime" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

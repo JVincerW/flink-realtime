@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/flink-realtime.iml" filepath="$PROJECT_DIR$/flink-realtime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/logger/logger.iml" filepath="$PROJECT_DIR$/logger/logger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/publisher/publisher.iml" filepath="$PROJECT_DIR$/publisher/publisher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/realtime/realtime.iml" filepath="$PROJECT_DIR$/realtime/realtime.iml" />
+    </modules>
+  </component>
+</project>
